@@ -29,7 +29,7 @@ function ListView() {
 
   const toast = useToast();
 
-  const headings = ['Earning Id', 'Mobile.number', 'Earnings'];
+  const headings = ['Earning Id', 'Mobile Number', 'Earnings'];
 
   useEffect(() => {
     Tabletop.init({
@@ -105,20 +105,21 @@ function ListView() {
                 Users
               </Text>
               <Flex>
-                <Button
-                  mx={[0, 4]}
-                  _hover={{}}
-                  colorScheme="teal"
-                  onClick={() => setIsselectmode(!isSelectMode)}
-                >
-                  Select mode
-                </Button>
-                {isSelectMode && (
+                {isSelectMode ? (
                   <Button
                     colorScheme="green"
                     onClick={() => handleApproveSelected()}
                   >
                     Approve selected
+                  </Button>
+                ) : (
+                  <Button
+                    mx={[0, 4]}
+                    _hover={{}}
+                    colorScheme="teal"
+                    onClick={() => setIsselectmode(!isSelectMode)}
+                  >
+                    Select mode
                   </Button>
                 )}
               </Flex>
