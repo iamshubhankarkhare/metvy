@@ -12,7 +12,6 @@ function Item({ id, data, isCheckBox }) {
 
   const toggleOpen = () => {
     setIsOpen(true);
-    console.log(id);
   };
 
   const preferredOrder = (obj, order) => {
@@ -32,12 +31,8 @@ function Item({ id, data, isCheckBox }) {
       layout
       onClick={toggleOpen}
       initial={{ borderRadius: 10 }}
-      liststyle="none"
       mx="auto"
-      p={[8, 12]}
-      my="4"
       w="100%"
-      bg="rgba(214, 214, 214, 0.5)"
       cursor="pointer"
       _hover={{ bg: 'rgba(214, 214, 214, 0.8)' }}
     >
@@ -48,7 +43,7 @@ function Item({ id, data, isCheckBox }) {
               fontSize={['xl', '2xl']}
               fontWeight="400"
               key={i}
-              mx={[4, 20]}
+              mx={[2, 20]}
             >
               {data[d]}
             </Text>
