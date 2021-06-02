@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, ListItem } from '@chakra-ui/react';
+import { Box, Flex, Text, ListItem } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DecisionButtons from './decisionButtons';
 import { StoreContext } from '../utils/store';
@@ -11,9 +11,21 @@ function Item({ id, data }) {
   const MotionBox = motion(Box);
 
   const toggleOpen = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
     console.log(id);
   };
+
+  const preferredOrder = (obj, order) => {
+    const newObject = {};
+    for (let i = 0; i < order.length; i++) {
+      if (obj.hasOwnProperty(order[i])) {
+        newObject[order[i]] = obj[order[i]];
+      }
+    }
+    return newObject;
+  };
+
+  data = preferredOrder(data, ['earning_id', 'mobile', 'earning']);
 
   return (
     <MotionListItem
@@ -27,9 +39,20 @@ function Item({ id, data }) {
       w="100%"
       bg="rgba(214, 214, 214, 0.5)"
       cursor="pointer"
+      _hover={{ bg: 'rgba(214, 214, 214, 0.8)' }}
     >
-      <MotionBox layout>bye</MotionBox>
-      <AnimatePresence>{isOpen && <DecisionButtons />}</AnimatePresence>
+      <MotionBox layout>
+        <Flex justify="space-around">
+          {Object.keys(data).map((d, i) => (
+            <Text fontSize={['xl', '2xl']} fontWeight="400" key={i}>
+              {data[d]}
+            </Text>
+          ))}
+        </Flex>
+      </MotionBox>
+      <AnimatePresence>
+        {isOpen && <DecisionButtons data={data} />}
+      </AnimatePresence>
     </MotionListItem>
   );
 }

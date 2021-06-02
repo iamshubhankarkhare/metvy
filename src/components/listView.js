@@ -28,7 +28,7 @@ function ListView() {
         liststyle="none"
         bg="white"
         w={['xs', '4xl']}
-        p="12"
+        p={[4, 12]}
         mx="auto"
         maxH="60%"
         overflow="auto"
