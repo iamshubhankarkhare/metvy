@@ -136,7 +136,7 @@ function ListView() {
             {!isSelectMode &&
               items.map((item) => (
                 <Flex
-                  p={[8, 12]}
+                  px={[8, 12]}
                   my="4"
                   bg="rgba(214, 214, 214, 0.5)"
                   key={item.earning_id}
@@ -149,7 +149,7 @@ function ListView() {
                 <VStack>
                   {items.map((item) => (
                     <Flex
-                      p={[8, 12]}
+                      px={[8, 12]}
                       my="4"
                       bg="rgba(214, 214, 214, 0.5)"
                       key={item.earning_id}

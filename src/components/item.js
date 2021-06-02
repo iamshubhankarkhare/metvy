@@ -31,10 +31,10 @@ function Item({ id, data, isCheckBox }) {
       layout
       onClick={toggleOpen}
       initial={{ borderRadius: 10 }}
+      py={[8, 12]}
       mx="auto"
       w="100%"
       cursor="pointer"
-      _hover={{ bg: 'rgba(214, 214, 214, 0.8)' }}
     >
       <MotionBox layout>
         <Flex justify="space-around">
