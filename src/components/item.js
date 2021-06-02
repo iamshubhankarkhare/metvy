@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import DecisionButtons from './decisionButtons';
 import { StoreContext } from '../utils/store';
 
-function Item({ id, data }) {
+function Item({ id, data, isCheckBox }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const MotionListItem = motion(ListItem);
@@ -44,14 +44,19 @@ function Item({ id, data }) {
       <MotionBox layout>
         <Flex justify="space-around">
           {Object.keys(data).map((d, i) => (
-            <Text fontSize={['xl', '2xl']} fontWeight="400" key={i}>
+            <Text
+              fontSize={['xl', '2xl']}
+              fontWeight="400"
+              key={i}
+              mx={[4, 20]}
+            >
               {data[d]}
             </Text>
           ))}
         </Flex>
       </MotionBox>
       <AnimatePresence>
-        {isOpen && <DecisionButtons data={data} />}
+        {isOpen && !isCheckBox && <DecisionButtons data={data} />}
       </AnimatePresence>
     </MotionListItem>
   );

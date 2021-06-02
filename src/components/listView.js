@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Tabletop from 'tabletop';
-import { UnorderedList } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  Checkbox,
+  CheckboxGroup,
+  VStack,
+  UnorderedList,
+} from '@chakra-ui/react';
 import { motion, AnimateSharedLayout } from 'framer-motion';
 import Item from './item';
 import { StoreContext } from '../utils/store';
@@ -8,6 +15,7 @@ import { StoreContext } from '../utils/store';
 const MotionUnorderedList = motion(UnorderedList);
 
 function ListView() {
+  const [checkboxValue, setCheckboxvalue] = useState([]);
   const { itemsState } = React.useContext(StoreContext);
   const [items, setItems] = itemsState;
 
@@ -36,6 +44,24 @@ function ListView() {
         {items.map((item) => (
           <Item key={item.earning_id} id={item.earning_id} data={item} />
         ))}
+        <CheckboxGroup onChange={(e) => console.log(e)} size="lg">
+          <VStack>
+            {items.map((item) => (
+              <Checkbox
+                value={item.earning_id}
+                key={item.earning_id}
+                border="purple"
+              >
+                <Item
+                  key={item.earning_id}
+                  id={item.earning_id}
+                  data={item}
+                  isCheckBox={true}
+                />
+              </Checkbox>
+            ))}
+          </VStack>
+        </CheckboxGroup>
       </MotionUnorderedList>
     </AnimateSharedLayout>
   );
